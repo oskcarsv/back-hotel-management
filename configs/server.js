@@ -7,6 +7,7 @@ import morgan from 'morgan';
 import bcryptjs from 'bcryptjs';
 import {dbConnection} from './mongo.js';
 import User from '../src/user/user.model.js'
+import authRoutes from '../src/auth/auth.routes.js';
 
 class Server{
 
@@ -15,10 +16,12 @@ class Server{
 
         this.app = express();
         this.port = process.env.PORT;
+        this.authPath = '/hotel-management/v1/auth'
 
         this.middlewares();
         this.connectDB();
         this.defaultCredential();
+        this.routes();
 
     }
 
@@ -66,6 +69,12 @@ class Server{
 
     async connectDB(){
         await dbConnection();
+    }
+
+    routes(){
+
+        this.app.use(this.authPath, authRoutes);
+
     }
 
     listen(){
