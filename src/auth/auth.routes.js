@@ -8,7 +8,7 @@ const router = Router();
 router.post(
     '/login',
     [
-        check('usernameOrEmail', 'Its obligatory a username or a email').not().isEmpty(),
+        check('usernameOrEmail', "It's obligatory a username or a email").not().isEmpty(),
         check('password', 'Is Obligatory the password').not().isEmpty(),
         validateFields,
     ],
