@@ -5,6 +5,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import bcryptjs from 'bcryptjs';
+import {dbConnection} from './mongo.js';
 
 class Server{
 
@@ -15,6 +16,7 @@ class Server{
         this.port = process.env.PORT;
 
         this.middlewares();
+        this.connectDB();
 
     }
 
@@ -26,6 +28,10 @@ class Server{
         this.app.use(helmet());
         this.app.use(morgan('dev'));
 
+    }
+
+    async connectDB(){
+        await dbConnection();
     }
 
     listen(){
