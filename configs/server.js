@@ -6,7 +6,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import bcryptjs from 'bcryptjs';
 import {dbConnection} from './mongo.js';
-import User from '../src/user/user.model.js'
+import User from '../src/user/user.model.js';
+import Role from '../src/role/role.model.js';
 import authRoutes from '../src/auth/auth.routes.js';
 
 class Server{
@@ -46,6 +47,16 @@ class Server{
             defaultUser.password = bcryptjs.hashSync(defaultUser.password, salt);
 
             await defaultUser.save();
+
+            const SUPER_ROLE = new Role({role: "SUPER_ROLE"});
+            const ADMIN_BOSS_ROLE = new Role({role: "ADMIN_BOSS_ROLE"});
+            const ADMIN_EMPLOYEE_ROLE = new Role({role: "ADMIN_EMPLOYEE_ROLE"});
+            const USER_ROLE = new Role({role: "USER_ROLE"});
+
+            await SUPER_ROLE.save();
+            await ADMIN_BOSS_ROLE.save();
+            await ADMIN_EMPLOYEE_ROLE.save();
+            await USER_ROLE.save();
 
             console.log('Default Credentials have been created.');
 
