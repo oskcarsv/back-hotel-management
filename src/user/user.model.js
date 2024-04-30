@@ -36,7 +36,7 @@ const UserSchema = mongoose.Schema({
 
         type: String,
         required: true,
-        enum: ["SUPER_ROLE", "ADMIN_BOSS_ROLE", "ADMIN_EMPLOYEE", "USER_ROLE"]
+        enum: ["SUPER_ROLE", "ADMIN_BOSS_ROLE", "ADMIN_EMPLOYEE_ROLE", "USER_ROLE"]
 
     },
 
