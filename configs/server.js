@@ -9,6 +9,7 @@ import {dbConnection} from './mongo.js';
 import User from '../src/user/user.model.js';
 import Role from '../src/role/role.model.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import userRoutes from '../src/user/user.routes.js';
 
 class Server{
 
@@ -18,6 +19,7 @@ class Server{
         this.app = express();
         this.port = process.env.PORT;
         this.authPath = '/hotel-management/v1/auth'
+        this.userPath = '/hotel-management/v1/user'
 
         this.middlewares();
         this.connectDB();
@@ -85,6 +87,7 @@ class Server{
     routes(){
 
         this.app.use(this.authPath, authRoutes);
+        this.app.use(this.userPath, userRoutes);
 
     }
 
