@@ -59,3 +59,27 @@ export const createUser = async (req, res) =>{
     }
 
 }
+
+export const listUsers = async (req, res = response) =>{
+
+    const {limit, from} = req.query;
+
+    const query = {state: true};
+
+    const [total,user] = await Promise.all([
+
+        User.countDocuments(query),
+        User.find(query)
+            .skip(Number(from))
+            .limit(Number(limit))
+
+    ]);
+
+    res.status(200).json({
+
+        total,
+        user
+
+    })
+
+}

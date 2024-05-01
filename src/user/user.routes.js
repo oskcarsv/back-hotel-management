@@ -2,7 +2,7 @@ import {Router} from 'express';
 
 import {check} from 'express-validator';
 
-import {createUser} from '../user/user.controller.js';
+import {createUser, listUsers} from '../user/user.controller.js';
 
 import {validateJWT} from '../middleware/validate-jwt.js';
 
@@ -13,6 +13,8 @@ import { existentEmail, existentUsername, existentRole } from "../helpers/db-val
 import { validationPassword } from "../helpers/data-validator.js";
 
 const router = Router();
+
+router.get("/", listUsers);
 
 router.post(
 
