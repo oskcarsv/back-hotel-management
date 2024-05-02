@@ -83,3 +83,51 @@ export const listUsers = async (req, res = response) =>{
     })
 
 }
+
+export const deleteUser = async (req, res = response) =>{
+
+    if(req.user.role === "USER_ROLE"){
+
+        const id = req.user._id;
+
+        await User.findByIdAndUpdate(id, {state: false});
+
+        const user = await User.findOne({_id: id});
+
+        res.status(200).json({
+
+            msg: `${req.user.username} your profile was delete successfully.`
+            
+        })
+
+    }else{
+
+        const { usernameOrEmail } = req.body;
+
+        if(usernameOrEmail.includes('@')){
+
+
+
+            await User.findOneAndUpdate({email: usernameOrEmail}, {state: false });
+
+            const user = await User.findOne({ email: usernameOrEmail });
+
+            res.status(200).json({
+                msg: `${req.user.username} the profile ${user.email} was successfully delete.`,
+            });
+
+        }else{
+
+            await User.findOneAndUpdate({username: usernameOrEmail}, {state: false });
+
+            const user = await User.findOne({ username: usernameOrEmail });
+
+            res.status(200).json({
+                msg: `${req.user.username} the profile ${user.email} was successfully delete.`,
+            });
+
+        }
+
+    }
+
+}

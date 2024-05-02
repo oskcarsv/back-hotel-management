@@ -33,3 +33,25 @@ export const existentRole = async (role = '') =>{
     }
 
 }
+
+export const existentUserOrEmail = async (usernameOrEmail = '') =>{
+
+    if(usernameOrEmail.includes('@')){
+
+        const existEmail = await User.findOne({ email: usernameOrEmail });
+
+        if (!existEmail) {
+            throw new Error(`The Email ${usernameOrEmail} wasn't found in the DataBase`);
+        }
+
+    }else{
+
+        const existUsername = await User.findOne({ username: usernameOrEmail });
+
+        if (!existUsername) {
+            throw new Error(`The Username ${usernameOrEmail} wasn't found in the DataBase`);
+        }
+
+    }
+
+}
