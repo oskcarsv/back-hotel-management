@@ -131,3 +131,175 @@ export const deleteUser = async (req, res = response) =>{
     }
 
 }
+
+export const updateUser = async (req, res) => {
+    
+    if (req.user.role === "USER_ROLE") {
+
+        const id = req.user._id;
+
+        const { _id, state, ...rest } = req.body;
+
+        await User.findByIdAndUpdate(id, rest);
+
+        const user = await User.findOne({ _id: id });
+
+        const { password } = req.body;
+
+        if (password != null) {
+            
+            const salt = bcryptjs.genSaltSync();
+            
+            user.password = bcryptjs.hashSync(password, salt);
+
+            await user.save();
+
+        }
+
+        res.status(200).json({
+
+            msg: `${req.user.username} your profile was successfully update :)`
+
+        });
+
+    }else{
+
+        const { usernameOrEmail } = req.body;
+
+        if (usernameOrEmail == "" || usernameOrEmail == null) {
+            
+            const id = req.user._id;
+
+            const { _id, state, ...rest } = req.body;
+
+            await User.findByIdAndUpdate(id, rest);
+
+            const user = await User.findOne({ _id: id });
+
+            const { password } = req.body;
+
+            if (password != null) {
+                
+                const salt = bcryptjs.genSaltSync();
+                
+                user.password = bcryptjs.hashSync(password, salt);
+
+                await user.save();
+
+            }
+
+            res.status(200).json({
+
+                msg: `${req.user.username} your profile was successfully update :)`
+
+            });
+
+        } else {
+            
+            if (req.user.role == "SUPER_ROLE") {
+                
+                const { _id, state, ...rest } = req.body;
+
+                if (usernameOrEmail.includes('@')) {
+                    
+                    await User.findOneAndUpdate({ email: usernameOrEmail }, rest);
+
+                    const user = await User.findOne({ email : usernameOrEmail });
+                    
+                    const { password } = req.body;
+
+                    if (password != null) {
+                        
+                        const salt = bcryptjs.genSaltSync();
+                        
+                        user.password = bcryptjs.hashSync(password, salt);
+
+                        await user.save();
+
+                    }
+
+                    res.status(200).json({
+                        msg: `${req.user.username} you update successfully the profile ${user.username}`
+                    });
+
+                } else {
+                    
+                    await User.findOneAndUpdate({ username: usernameOrEmail }, rest);
+
+                    const user = await User.findOne({ username : usernameOrEmail });
+                    
+                    const { password } = req.body;
+
+                    if (password != null) {
+                        
+                        const salt = bcryptjs.genSaltSync();
+                        
+                        user.password = bcryptjs.hashSync(password, salt);
+
+                        await user.save();
+
+                    }
+
+                    res.status(200).json({
+                        msg: `${req.user.username} you update successfully the profile ${user.username}`
+                    });
+
+                }
+
+            } else {
+                
+                const { _id, state, role, ...rest } = req.body;
+
+                if (usernameOrEmail.includes('@')) {
+                    
+                    await User.findOneAndUpdate({ email: usernameOrEmail }, rest);
+
+                    const user = await User.findOne({ email : usernameOrEmail });
+                    
+                    const { password } = req.body;
+
+                    if (password != null) {
+                        
+                        const salt = bcryptjs.genSaltSync();
+                        
+                        user.password = bcryptjs.hashSync(password, salt);
+
+                        await user.save();
+
+                    }
+
+                    res.status(200).json({
+                        msg: `${req.user.username} you update successfully the profile ${user.username}`
+                    });
+
+                } else {
+                    
+                    await User.findOneAndUpdate({ username: usernameOrEmail }, rest);
+
+                    const user = await User.findOne({ username : usernameOrEmail });
+                    
+                    const { password } = req.body;
+
+                    if (password != null) {
+                        
+                        const salt = bcryptjs.genSaltSync();
+                        
+                        user.password = bcryptjs.hashSync(password, salt);
+
+                        await user.save();
+
+                    }
+
+                    res.status(200).json({
+                        msg: `${req.user.username} you update successfully the profile ${user.username}`
+                    });
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
