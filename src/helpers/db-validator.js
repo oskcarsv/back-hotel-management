@@ -2,11 +2,21 @@ import User from '../user/user.model.js';
 
 import Role from '../role/role.model.js';
 
+import Bedroom from '../bedroom/bedroom.model.js';
+
 export const existentEmail = async (email = '') => {
     const existEmail = await User.findOne({ email });
 
     if (existEmail) {
         throw new Error(`The Email ${email} was register`);
+    }
+}
+
+export const existentBedName = async (bedroomName = '') => {
+    const existBedroomName = await Bedroom.findOne({ bedroomName });
+
+    if (!existBedroomName) {
+        throw new Error(`The Bedroom ${bedroomName} wasn't register`);
     }
 }
 

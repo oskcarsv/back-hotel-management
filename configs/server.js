@@ -10,6 +10,7 @@ import User from '../src/user/user.model.js';
 import Role from '../src/role/role.model.js';
 import authRoutes from '../src/auth/auth.routes.js';
 import userRoutes from '../src/user/user.routes.js';
+import bedroomRoutes from '../src/bedroom/bedroom.routes.js';
 
 class Server{
 
@@ -20,6 +21,7 @@ class Server{
         this.port = process.env.PORT;
         this.authPath = '/hotel-management/v1/auth'
         this.userPath = '/hotel-management/v1/user'
+        this.bedroomPath = '/hotel-management/v1/bedroom'
 
         this.middlewares();
         this.connectDB();
@@ -54,6 +56,10 @@ class Server{
             const ADMIN_BOSS_ROLE = new Role({role: "ADMIN_BOSS_ROLE"});
             const ADMIN_EMPLOYEE_ROLE = new Role({role: "ADMIN_EMPLOYEE_ROLE"});
             const USER_ROLE = new Role({role: "USER_ROLE"});
+            const NOT_USE = new Role({role: "NOT_USE"});
+            const IN_USE = new Role({role: "IN_USE"});
+            const FINISH_USE = new Role({role: "FINISH_USE"});
+            const CANCEL = new Role({role: "CANEL"});
 
             await SUPER_ROLE.save();
             await ADMIN_BOSS_ROLE.save();
@@ -88,6 +94,7 @@ class Server{
 
         this.app.use(this.authPath, authRoutes);
         this.app.use(this.userPath, userRoutes);
+        this.app.use(this.bedroomPath, bedroomRoutes);
 
     }
 

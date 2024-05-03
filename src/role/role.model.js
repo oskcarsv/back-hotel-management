@@ -8,6 +8,12 @@ const RoleSchema = mongoose.Schema({
         required: [true, "Role is required"],
         unique: true
 
+    },
+
+    bedroomStatus: {
+        type: String,
+        required: [true, "Bedroom Status is required"],
+        unique: true
     }
 
 });
