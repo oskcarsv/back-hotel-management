@@ -33,7 +33,6 @@ const BedroomSchema = mongoose.Schema({
     status: {
 
         type: String,
-        required: [true, "The status is required"],
         enum: ["NOT_USE", "IN_USE", "FINISH_USE", "CANCEL"],
         default: "NOT_USE"
 

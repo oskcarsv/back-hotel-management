@@ -1,14 +1,14 @@
-import {Router} from 'express';
+import { Router } from 'express';
 
-import {check} from 'express-validator';
+import { check } from 'express-validator';
 
-import {addBedroom, listBedroom, deleteBedroom, updateBedroom} from '../bedroom/bedroom.controller.js';
+import { addBedroom, deleteBedroom, listBedroom, updateBedroom } from '../bedroom/bedroom.controller.js';
 
-import {existentBedName} from '../helpers/db-validator.js';
+import { existentBedName } from '../helpers/db-validator.js';
 
-import {validateJWT} from '../middleware/validate-jwt.js';
+import { validateJWT } from '../middleware/validate-jwt.js';
 
-import {validateFields} from '../middleware/validate-fields.js';
+import { validateFields } from '../middleware/validate-fields.js';
 
 const router = Router();
 
@@ -38,7 +38,7 @@ router.put(
         check("bedroomName").not().isEmpty(),
         check("bedroomName").custom(existentBedName),
         validateFields
-    ]
+    ], updateBedroom
 
 )
 
