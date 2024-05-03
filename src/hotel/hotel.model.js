@@ -12,7 +12,7 @@ const HotelSchema = mongoose.Schema({
     hotelDirection: {
 
         type: String,
-        required: [true, "The Hotel Dirction is required"]
+        required: [true, "The Hotel Direction is required"]
 
     },
 
@@ -26,6 +26,20 @@ const HotelSchema = mongoose.Schema({
     bedroomName: {
 
         type: [String]
+
+    },
+
+    bedroomCuantity: {
+
+        type: Number
+
+    },
+
+    status: {
+
+        type: String,
+        enum: ["ACTIVE", "MAINTENANCE", "CLOSED"],
+        default: "ACTIVE"
 
     }
 

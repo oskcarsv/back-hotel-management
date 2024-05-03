@@ -61,7 +61,10 @@ class Server{
             const NOT_USE = new Role({bedroomStatus: "NOT_USE"});
             const IN_USE = new Role({bedroomStatus: "IN_USE"});
             const FINISH_USE = new Role({bedroomStatus: "FINISH_USE"});
-            const CANCEL = new Role({bedroomStatus: "CANCEL"});
+            const CANCEL = new Role({ bedroomStatus: "CANCEL" });
+            const ACTIVE = new Role({ hotelStatus: "ACTIVE" });
+            const MAINTENANCE = new Role({ hotelStatus: "MAINTENANCE" });
+            const CLOSED = new Role({hotelStatus: "CLOSED"});
 
             await SUPER_ROLE.save();
             await ADMIN_BOSS_ROLE.save();
@@ -71,6 +74,9 @@ class Server{
             await IN_USE.save();
             await FINISH_USE.save();
             await CANCEL.save();
+            await ACTIVE.save();
+            await MAINTENANCE.save();
+            await CLOSED.save();
 
             console.log('Default Credentials have been created.');
 

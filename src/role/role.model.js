@@ -10,6 +10,10 @@ const RoleSchema = mongoose.Schema({
 
     bedroomStatus: {
         type: String
+    },
+
+    hotelStatus: {
+        type: String
     }
 
 });

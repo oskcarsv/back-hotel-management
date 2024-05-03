@@ -41,6 +41,14 @@ export const existentBedName = async (bedroomName = '') => {
     }
 }
 
+export const existentHotel = async (hotelName = '') => {
+    const existHotelName = await Hotel.findOne({  hotelName });
+
+    if (!existHotelName) {
+        throw new Error(`The Hotel ${hotelName} not found in Database`);
+    }
+}
+
 export const existentUsername = async (username = '') => {
     const existUsername = await User.findOne({ username });
 
