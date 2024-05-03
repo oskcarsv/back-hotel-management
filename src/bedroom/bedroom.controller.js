@@ -47,6 +47,24 @@ export const listBedroom = async(req, res) =>{
 
 }
 
+export const updateBedroom = async (req, res) =>{
+
+    const { _id, state, ...rest } = req.body;
+
+    const {findBedroomName} = req.body;
+
+    await Bedroom.findOneAndUpdate({bedroomName: findBedroomName}, rest);
+
+    const bedroom = await Bedroom.findOne({ bedroomName: findBedroomName });
+
+    res.status(200).json({
+
+        msg: `${req.user.username} the bedroom was successfully update :)`
+
+    });
+
+}
+
 export const deleteBedroom = async(req, res) =>{
 
     const {bedroomName} = req.body;

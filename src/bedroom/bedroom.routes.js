@@ -2,7 +2,7 @@ import {Router} from 'express';
 
 import {check} from 'express-validator';
 
-import {addBedroom, listBedroom, deleteBedroom} from '../bedroom/bedroom.controller.js';
+import {addBedroom, listBedroom, deleteBedroom, updateBedroom} from '../bedroom/bedroom.controller.js';
 
 import {existentBedName} from '../helpers/db-validator.js';
 
@@ -27,6 +27,18 @@ router.post(
         validateFields
 
     ], addBedroom
+
+)
+
+router.put(
+
+    "/",
+    [
+        validateJWT,
+        check("bedroomName").not().isEmpty(),
+        check("bedroomName").custom(existentBedName),
+        validateFields
+    ]
 
 )
 
