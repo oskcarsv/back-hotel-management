@@ -2,11 +2,11 @@ import {Router} from 'express';
 
 import {check} from 'express-validator';
 
-import {createUser, listUsers, deleteUser} from '../user/user.controller.js';
+import {createUser, listUsers, deleteUser,updateUser} from '../user/user.controller.js';
 
 import {validateJWT} from '../middleware/validate-jwt.js';
 
-import {validateFields, validateRolCreate, validateRolDelete} from '../middleware/validate-fields.js';
+import {validateFields, validateRolCreate, validateRolDelete, validateRolUpdate} from '../middleware/validate-fields.js';
 
 import { existentEmail, existentUsername, existentRole, existentUserOrEmail } from "../helpers/db-validator.js";
 
@@ -47,6 +47,17 @@ router.delete(
         validateRolDelete,
         validateFields
     ], deleteUser
+
+)
+
+router.put(
+
+    "/",
+    [
+        validateJWT,
+        // validateRolUpdate,
+        validateFields
+    ], updateUser
 
 )
 

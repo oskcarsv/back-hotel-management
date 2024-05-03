@@ -116,6 +116,41 @@ export const validateRolDelete = async (req, res, next) =>{
 
     if(req.user.role === "ADMIN_BOSS_ROLE"){
 
+        if(!usernameOrEmail == "" || !usernameOrEmail == null){
+
+            if(usernameOrEmail.includes('@')){
+
+                const user = await User.findOne({email: usernameOrEmail})
+    
+                if(user.role == "ADMIN_BOSS_ROLE" || user.role == "SUPER_ROLE"){
+    
+                    return res.status(403).json({
+    
+                        msg: `${req.user.username}, you can't update a Profile with a Roles: ADMIN_BOSS_ROLE or SUPER_ROLE`
+    
+                    })
+    
+                }
+    
+            }else{
+    
+                const user = await User.findOne({username: usernameOrEmail});
+    
+                if(user.role == "ADMIN_BOSS_ROLE" || user.role == "SUPER_ROLE"){
+    
+                    return res.status(403).json({
+    
+                        msg: `${req.user.username}, you can't update a Profile with a Roles: ADMIN_BOSS_ROLE or SUPER_ROLE`
+    
+                    })
+    
+                }
+    
+            }
+
+
+        }
+
         if(usernameOrEmail.includes('@')){
 
             const user = await User.findOne({email: usernameOrEmail});
@@ -142,6 +177,100 @@ export const validateRolDelete = async (req, res, next) =>{
 
                 })
 
+            }
+
+        }
+
+    }
+
+    next();
+
+}
+
+export const validateRolUpdate = async (req, res, next) =>{
+
+    const {usernameOrEmail} = req.body;
+
+    if(req.user.role === "USER_ROLE"){
+
+        if(!usernameOrEmail == "" || !usernameOrEmail == null){
+
+            return res.status(403).json({
+
+                msg: `${req.user.username}, you can't asign update the profiles of others users.`
+    
+            });
+
+        }
+
+    }
+
+    if(req.user.role === "ADMIN_EMPLOYEE_ROLE"){
+
+        if(usernameOrEmail.includes('@')){
+
+            const user = await User.findOne({email: usernameOrEmail});
+
+            if(user.role == "ADMIN_EMPLOYEE_ROLE" || user.role == "ADMIN_BOSS_ROLE" || user.role == "SUPER_ROLE"){
+
+                return res.status(403).json({
+
+                    msg: `${req.user.username}, you can't update a Profile with a Roles: ADMIN_EMPLOYEE_ROLE, ADMIN_BOSS_ROLE or SUPER_ROLE`
+
+                })
+
+            }
+
+        }else{
+
+            const user = await User.findOne({username: usernameOrEmail});
+
+            if(user.role == "ADMIN_EMPLOYEE_ROLE" || user.role == "ADMIN_BOSS_ROLE" || user.role == "SUPER_ROLE"){
+
+                return res.status(403).json({
+
+                    msg: `${req.user.username}, you can't update a Profile with a Roles: ADMIN_EMPLOYEE_ROLE, ADMIN_BOSS_ROLE or SUPER_ROLE`
+
+                })
+
+            }
+
+        }
+
+    }
+
+    if(req.user.role === "ADMIN_BOSS_ROLE"){
+
+        if(!usernameOrEmail == "" || usernameOrEmail == null){
+
+            if(usernameOrEmail.includes('@')){
+
+                const user = await User.findOne({email: usernameOrEmail})
+    
+                if(user.role == "ADMIN_BOSS_ROLE" || user.role == "SUPER_ROLE"){
+    
+                    return res.status(403).json({
+    
+                        msg: `${req.user.username}, you can't update a Profile with a Roles: ADMIN_BOSS_ROLE or SUPER_ROLE`
+    
+                    })
+    
+                }
+    
+            }else{
+    
+                const user = await User.findOne({username: usernameOrEmail});
+    
+                if(user.role == "ADMIN_BOSS_ROLE" || user.role == "SUPER_ROLE"){
+    
+                    return res.status(403).json({
+    
+                        msg: `${req.user.username}, you can't update a Profile with a Roles: ADMIN_BOSS_ROLE or SUPER_ROLE`
+    
+                    })
+    
+                }
+    
             }
 
         }
