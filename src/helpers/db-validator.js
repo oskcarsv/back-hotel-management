@@ -12,11 +12,19 @@ export const existentEmail = async (email = '') => {
     }
 }
 
+export const notExistentBedName = async (findBedroomName = '') => {
+    const notExistBedroomName = await Bedroom.findOne({ bedroomName: findBedroomName });
+
+    if (!notExistBedroomName) {
+        throw new Error(`The Bedroom ${findBedroomName} wasn't register`);
+    }
+}
+
 export const existentBedName = async (bedroomName = '') => {
     const existBedroomName = await Bedroom.findOne({ bedroomName });
 
-    if (!existBedroomName) {
-        throw new Error(`The Bedroom ${bedroomName} wasn't register`);
+    if (existBedroomName) {
+        throw new Error(`The Bedroom ${bedroomName} was register`);
     }
 }
 
