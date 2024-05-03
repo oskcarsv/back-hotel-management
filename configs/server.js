@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import authRoutes from '../src/auth/auth.routes.js';
 import bedroomRoutes from '../src/bedroom/bedroom.routes.js';
+import hotelRoutes from '../src/hotel/hotel.routes.js';
 import Role from '../src/role/role.model.js';
 import User from '../src/user/user.model.js';
 import userRoutes from '../src/user/user.routes.js';
@@ -22,6 +23,7 @@ class Server{
         this.authPath = '/hotel-management/v1/auth'
         this.userPath = '/hotel-management/v1/user'
         this.bedroomPath = '/hotel-management/v1/bedroom'
+        this.hotelPath = '/hotel-management/v1/hotel'
 
         this.middlewares();
         this.connectDB();
@@ -99,6 +101,7 @@ class Server{
         this.app.use(this.authPath, authRoutes);
         this.app.use(this.userPath, userRoutes);
         this.app.use(this.bedroomPath, bedroomRoutes);
+        this.app.use(this.hotelPath, hotelRoutes);
 
     }
 

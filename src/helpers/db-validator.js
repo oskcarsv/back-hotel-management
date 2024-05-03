@@ -20,6 +20,19 @@ export const notExistentBedName = async (findBedroomName = '') => {
     }
 }
 
+export const notExistentBedNameArray = async (bedroomName = []) =>{
+    
+    for (const bedroom of bedroomName) {
+
+        const notExistBedroomName = await Bedroom.findOne({ bedroomName: bedroom });
+
+    if (!notExistBedroomName) {
+        throw new Error(`The Bedroom ${bedroomName} wasn't register`);
+    }
+    }
+
+}
+
 export const existentBedName = async (bedroomName = '') => {
     const existBedroomName = await Bedroom.findOne({ bedroomName });
 
