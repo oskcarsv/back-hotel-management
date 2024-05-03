@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"usernameOrEmail\": \"jorge@gmail.com\",\r\n    \"password\": \"11Marzo2000!\"\r\n}",
+							"raw": "{\r\n    \"usernameOrEmail\": \"admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,8 +90,7 @@
 							{
 								"key": "x-token",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxZGNlMDdmMDQ4OTMzYTA1YzhkYmIiLCJpYXQiOjE3MTQ1NDM4NjIsImV4cCI6MTcxNDU1MTA2Mn0.tgC93gMUIPYTGghNf_o_XYHlS91HuuocXJzIorMbvmg",
-								"type": "text",
-								"uuid": "eca95653-bb04-4187-9e73-57291b088df9"
+								"type": "text"
 							}
 						],
 						"body": {
@@ -153,8 +152,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ2MjUxNTksImV4cCI6MTcxNDYzMjM1OX0.F6GOayAhSs3iQiOU8WG8Ft0_dY9MBKkilHkDkgmDinw",
-								"uuid": "47178fbe-dbc7-4de7-8824-6c21ac01e3b0"
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ2MjUxNTksImV4cCI6MTcxNDYzMjM1OX0.F6GOayAhSs3iQiOU8WG8Ft0_dY9MBKkilHkDkgmDinw"
 							}
 						],
 						"body": {
@@ -192,8 +190,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ3MTUwODYsImV4cCI6MTcxNDcyMjI4Nn0.Sf0gsCSymrz3DsECL6DL3J3pEogP0cXRi6Fi2C5mBLg",
-								"uuid": "eac8a4e6-3bb5-4799-998f-8183dccd00ca"
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ3MTUwODYsImV4cCI6MTcxNDcyMjI4Nn0.Sf0gsCSymrz3DsECL6DL3J3pEogP0cXRi6Fi2C5mBLg"
 							}
 						],
 						"body": {
@@ -236,13 +233,12 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ3MjE5MTQsImV4cCI6MTcxNDcyOTExNH0.U6lbL9cqlDN0QGceauX-axhzlgBlt9yJVYecKHbqELY",
-								"uuid": "a97bc614-1566-49e1-893c-e3f4827eb057"
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZjhhMzNkYzgwZWRjZTA1NGRkYWYiLCJpYXQiOjE3MTQ3NDc2MTYsImV4cCI6MTcxNDc1NDgxNn0.V6YuCEknPE9PGmJfhDnC691w4AwNmXbpopd1ScphwO0"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"bedroomName\": \"Palacios\",\r\n    \"bedroomPrize\": \"$100.00\",\r\n    \"bedroomCapacity\": \"4 kids, 2 adults\",\r\n    \"bed\": \"2 kings\"\r\n}",
+							"raw": "{\r\n    \"bedroomName\": \"Palacios\",\r\n    \"bedroomPrize\": \"180.00\",\r\n    \"bedroomCapacity\": \"6 kids, 2 adults\",\r\n    \"bed\": \"2 kings\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -299,8 +295,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ3MjMyNTQsImV4cCI6MTcxNDczMDQ1NH0.0GH7axLac5FneLIonItD7JfXUmsP4pBixIt-ZpZoiGM",
-								"uuid": "3b4d268b-8027-43dc-8eb8-772919a36b4c"
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ3MjMyNTQsImV4cCI6MTcxNDczMDQ1NH0.0GH7axLac5FneLIonItD7JfXUmsP4pBixIt-ZpZoiGM"
 							}
 						],
 						"body": {
@@ -332,10 +327,25 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Update Beedrom",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZTdlNjhjZjdlZmU4NmRlMTlhZGIiLCJpYXQiOjE3MTQ3NDM0MTIsImV4cCI6MTcxNDc1MDYxMn0.3wBspFArWtlOQdYU19PjfO5EziKnuDEs6kfLQXdM6C8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"findBedroomName\": \"Palacios\",\r\n    \"bedroomCapacity\": \"6 kids, 2 adults\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:3001/hotel-management/v1/bedroom",
 							"protocol": "http",
@@ -350,6 +360,113 @@
 								"hotel-management",
 								"v1",
 								"bedroom"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "add Hotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZjhhMzNkYzgwZWRjZTA1NGRkYWYiLCJpYXQiOjE3MTQ3NDc2MTYsImV4cCI6MTcxNDc1NDgxNn0.V6YuCEknPE9PGmJfhDnC691w4AwNmXbpopd1ScphwO0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hotelName\": \"Rivera Maya\",\r\n    \"hotelDirection\": \"Mixco Zona 3\",\r\n    \"hotelNumber\": \"PBX: 2000\",\r\n    \"bedroomName\": [\"Palacios\", \"Kings\"],\r\n    \"bedroomCuantity\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/hotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Hotel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/hotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Hotel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZjhhMzNkYzgwZWRjZTA1NGRkYWYiLCJpYXQiOjE3MTQ3NDgyOTcsImV4cCI6MTcxNDc1NTQ5N30.O6tYVyUzlmsadp6pqphiDOZPnTBEuusmVw2HdIqK4NA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hotelName\": \"Rivera Maya\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/hotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"hotel"
 							]
 						}
 					},
