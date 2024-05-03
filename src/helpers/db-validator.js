@@ -2,11 +2,50 @@ import User from '../user/user.model.js';
 
 import Role from '../role/role.model.js';
 
+import Bedroom from '../bedroom/bedroom.model.js';
+
 export const existentEmail = async (email = '') => {
     const existEmail = await User.findOne({ email });
 
     if (existEmail) {
         throw new Error(`The Email ${email} was register`);
+    }
+}
+
+export const notExistentBedName = async (findBedroomName = '') => {
+    const notExistBedroomName = await Bedroom.findOne({ bedroomName: findBedroomName });
+
+    if (!notExistBedroomName) {
+        throw new Error(`The Bedroom ${findBedroomName} wasn't register`);
+    }
+}
+
+export const notExistentBedNameArray = async (bedroomName = []) =>{
+    
+    for (const bedroom of bedroomName) {
+
+        const notExistBedroomName = await Bedroom.findOne({ bedroomName: bedroom });
+
+    if (!notExistBedroomName) {
+        throw new Error(`The Bedroom ${bedroomName} wasn't register`);
+    }
+    }
+
+}
+
+export const existentBedName = async (bedroomName = '') => {
+    const existBedroomName = await Bedroom.findOne({ bedroomName });
+
+    if (existBedroomName) {
+        throw new Error(`The Bedroom ${bedroomName} was register`);
+    }
+}
+
+export const existentHotel = async (hotelName = '') => {
+    const existHotelName = await Hotel.findOne({  hotelName });
+
+    if (!existHotelName) {
+        throw new Error(`The Hotel ${hotelName} not found in Database`);
     }
 }
 

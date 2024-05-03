@@ -1,15 +1,17 @@
 'use strict'
 
-import express from 'express';
+import bcryptjs from 'bcryptjs';
 import cors from 'cors';
+import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import bcryptjs from 'bcryptjs';
-import {dbConnection} from './mongo.js';
-import User from '../src/user/user.model.js';
-import Role from '../src/role/role.model.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import bedroomRoutes from '../src/bedroom/bedroom.routes.js';
+import hotelRoutes from '../src/hotel/hotel.routes.js';
+import Role from '../src/role/role.model.js';
+import User from '../src/user/user.model.js';
 import userRoutes from '../src/user/user.routes.js';
+import { dbConnection } from './mongo.js';
 
 class Server{
 
@@ -20,6 +22,8 @@ class Server{
         this.port = process.env.PORT;
         this.authPath = '/hotel-management/v1/auth'
         this.userPath = '/hotel-management/v1/user'
+        this.bedroomPath = '/hotel-management/v1/bedroom'
+        this.hotelPath = '/hotel-management/v1/hotel'
 
         this.middlewares();
         this.connectDB();
@@ -54,11 +58,25 @@ class Server{
             const ADMIN_BOSS_ROLE = new Role({role: "ADMIN_BOSS_ROLE"});
             const ADMIN_EMPLOYEE_ROLE = new Role({role: "ADMIN_EMPLOYEE_ROLE"});
             const USER_ROLE = new Role({role: "USER_ROLE"});
+            const NOT_USE = new Role({bedroomStatus: "NOT_USE"});
+            const IN_USE = new Role({bedroomStatus: "IN_USE"});
+            const FINISH_USE = new Role({bedroomStatus: "FINISH_USE"});
+            const CANCEL = new Role({ bedroomStatus: "CANCEL" });
+            const ACTIVE = new Role({ hotelStatus: "ACTIVE" });
+            const MAINTENANCE = new Role({ hotelStatus: "MAINTENANCE" });
+            const CLOSED = new Role({hotelStatus: "CLOSED"});
 
             await SUPER_ROLE.save();
             await ADMIN_BOSS_ROLE.save();
             await ADMIN_EMPLOYEE_ROLE.save();
             await USER_ROLE.save();
+            await NOT_USE.save();
+            await IN_USE.save();
+            await FINISH_USE.save();
+            await CANCEL.save();
+            await ACTIVE.save();
+            await MAINTENANCE.save();
+            await CLOSED.save();
 
             console.log('Default Credentials have been created.');
 
@@ -88,6 +106,8 @@ class Server{
 
         this.app.use(this.authPath, authRoutes);
         this.app.use(this.userPath, userRoutes);
+        this.app.use(this.bedroomPath, bedroomRoutes);
+        this.app.use(this.hotelPath, hotelRoutes);
 
     }
 
