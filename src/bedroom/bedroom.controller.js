@@ -44,8 +44,39 @@ export const listBedroom = async(req, res) =>{
         bedroom
 
     })
-
 }
+export const showAllRooms = async (req, res) => {
+    try {
+        const bedroom = await Bedroom.find();
+
+        if (!bedroom || bedroom.length === 0) {
+            return res.status(404).json({ msg: "No rooms found" });
+        }
+
+        return res.status(200).json({
+            msg: "List of all rooms",
+            bedroom
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send("Error getting rooms");
+    }
+};
+
+export const getRoomById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const bedroom = await Bedroom.findById(id);
+        if (!bedroom) {
+            return res.status(404).send("Room not found");
+        }
+        return res.status(200).json(bedroom);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send("Error getting room by ID");
+    }
+};
+
 
 export const updateBedroom = async (req, res) =>{
 

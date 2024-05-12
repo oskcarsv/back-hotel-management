@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { check } from 'express-validator';
 
-import { addBedroom, deleteBedroom, listBedroom, updateBedroom } from '../bedroom/bedroom.controller.js';
+import { addBedroom, deleteBedroom, listBedroom, updateBedroom, showAllRooms, getRoomById } from '../bedroom/bedroom.controller.js';
 
 import { existentBedName, notExistentBedName } from '../helpers/db-validator.js';
 
@@ -13,6 +13,7 @@ import { validateFields } from '../middleware/validate-fields.js';
 const router = Router();
 
 router.get("/", listBedroom);
+
 
 router.post(
 
@@ -29,6 +30,21 @@ router.post(
     ], addBedroom
 
 )
+router.get(
+    "/get",
+    [], listBedroom
+);
+
+router.get(
+    "/get",
+    [], showAllRooms
+);
+
+router.get(
+    "/get/:id",
+    [], getRoomById
+    
+);
 
 router.put(
 
