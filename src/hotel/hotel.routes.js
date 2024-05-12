@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { check } from 'express-validator';
 
-import { addHotel, deleteHotel, listHotel } from '../hotel/hotel.controller.js';
+import { addHotel, deleteHotel, listHotel, getHotelById, updateHotel } from '../hotel/hotel.controller.js';
 
 import { notExistentBedNameArray } from '../helpers/db-validator.js';
 
@@ -28,6 +28,26 @@ router.post(
         validateFields
     ], addHotel
 
+);
+
+router.get(
+    "/get",
+    [], 
+    listHotel
+);
+
+router.get(
+    "/get/:id",
+    [], getHotelById
+);
+
+router.put(
+    "/put/:id",
+    [
+        check("id", "ID de hotel no válido").isMongoId(),
+        check("id").custom(obtenerHotelPorId),
+        
+    ],updateHotel
 );
 
 router.delete(
