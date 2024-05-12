@@ -1,0 +1,478 @@
+{
+	"info": {
+		"_postman_id": "cc13d4b0-9f60-4b5d-9661-9b6b7662a348",
+		"name": "hotel-Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32787267"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usernameOrEmail\": \"admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jorge Revolorio\",\r\n    \"username\": \"jrevolorio\",\r\n    \"email\": \"jorge@gmail.com\",\r\n    \"password\": \"12Abril2005!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxZGNlMDdmMDQ4OTMzYTA1YzhkYmIiLCJpYXQiOjE3MTQ1NDM4NjIsImV4cCI6MTcxNDU1MTA2Mn0.tgC93gMUIPYTGghNf_o_XYHlS91HuuocXJzIorMbvmg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Evan\",\r\n    \"username\": \"eramirez\",\r\n    \"email\": \"evan@gmail.com\",\r\n    \"password\": \"11Marzo2000!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ2MjUxNTksImV4cCI6MTcxNDYzMjM1OX0.F6GOayAhSs3iQiOU8WG8Ft0_dY9MBKkilHkDkgmDinw"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usernameOrEmail\": \"oscar@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ3MTUwODYsImV4cCI6MTcxNDcyMjI4Nn0.Sf0gsCSymrz3DsECL6DL3J3pEogP0cXRi6Fi2C5mBLg"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Fernando\",\r\n    \"usernameOrEmail\": \"oscar@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bedroom",
+			"item": [
+				{
+					"name": "Regist Bedroom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZjhhMzNkYzgwZWRjZTA1NGRkYWYiLCJpYXQiOjE3MTQ3NDc2MTYsImV4cCI6MTcxNDc1NDgxNn0.V6YuCEknPE9PGmJfhDnC691w4AwNmXbpopd1ScphwO0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bedroomName\": \"Palacios\",\r\n    \"bedroomPrize\": \"180.00\",\r\n    \"bedroomCapacity\": \"6 kids, 2 adults\",\r\n    \"bed\": \"2 kings\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/bedroom",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"bedroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Bedroom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/bedroom",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"bedroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bedroom",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMxY2I2ZjUzNGZlYmE2NTJlZjU0NjYiLCJpYXQiOjE3MTQ3MjMyNTQsImV4cCI6MTcxNDczMDQ1NH0.0GH7axLac5FneLIonItD7JfXUmsP4pBixIt-ZpZoiGM"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bedroomName\": \"Palacios\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/bedroom",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"bedroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Beedrom",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZTdlNjhjZjdlZmU4NmRlMTlhZGIiLCJpYXQiOjE3MTQ3NDM0MTIsImV4cCI6MTcxNDc1MDYxMn0.3wBspFArWtlOQdYU19PjfO5EziKnuDEs6kfLQXdM6C8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"findBedroomName\": \"Palacios\",\r\n    \"bedroomCapacity\": \"6 kids, 2 adults\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/bedroom",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"bedroom"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "add Hotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZjhhMzNkYzgwZWRjZTA1NGRkYWYiLCJpYXQiOjE3MTQ3NDc2MTYsImV4cCI6MTcxNDc1NDgxNn0.V6YuCEknPE9PGmJfhDnC691w4AwNmXbpopd1ScphwO0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hotelName\": \"Rivera Maya\",\r\n    \"hotelDirection\": \"Mixco Zona 3\",\r\n    \"hotelNumber\": \"PBX: 2000\",\r\n    \"bedroomName\": [\"Palacios\", \"Kings\"],\r\n    \"bedroomCuantity\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/hotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Hotel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/hotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Hotel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM0ZjhhMzNkYzgwZWRjZTA1NGRkYWYiLCJpYXQiOjE3MTQ3NDgyOTcsImV4cCI6MTcxNDc1NTQ5N30.O6tYVyUzlmsadp6pqphiDOZPnTBEuusmVw2HdIqK4NA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hotelName\": \"Rivera Maya\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/hotel-management/v1/hotel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"hotel-management",
+								"v1",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

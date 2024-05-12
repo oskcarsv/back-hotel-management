@@ -4,10 +4,16 @@ const RoleSchema = mongoose.Schema({
 
     role: {
 
-        type: String,
-        required: [true, "Role is required"],
-        unique: true
+        type: String
 
+    },
+
+    bedroomStatus: {
+        type: String
+    },
+
+    hotelStatus: {
+        type: String
     }
 
 });
