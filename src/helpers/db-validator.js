@@ -1,7 +1,7 @@
 import User from '../user/user.model.js';
 
 import Role from '../role/role.model.js';
-
+import Hotel from '../hotel/hotel.model.js';
 import Bedroom from '../bedroom/bedroom.model.js';
 
 export const existentEmail = async (email = '') => {
@@ -49,6 +49,7 @@ export const existentHotel = async (hotelName = '') => {
     }
 }
 
+
 export const existentUsername = async (username = '') => {
     const existUsername = await User.findOne({ username });
 
@@ -92,5 +93,5 @@ export const existentUserOrEmail = async (usernameOrEmail = '') =>{
         }
 
     }
-
 }
+
