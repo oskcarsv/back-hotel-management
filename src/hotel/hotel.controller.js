@@ -98,7 +98,7 @@ export const deleteHotel = async(req, res) =>{
 
     await Hotel.findOneAndUpdate({ hotelName }, { status: "CLOSED" });
 
-    const hotel = await Hotel.findOne({hotelName});
+    const Hotel = await Hotel.findOne({hotelName});
 
     res.status(200).json({
 

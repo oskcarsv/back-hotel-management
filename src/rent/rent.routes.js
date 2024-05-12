@@ -1,24 +1,47 @@
-import express from 'express';
-import * as RentController from './rent.controller.js';
-import * as RentHelper from './rent.helper.js'; 
-const router = express.Router();
+import { Router } from 'express';
+import { check } from 'express-validator';
+import { addRent, updateRent, getRentList, getRentById, deleteRent} from '../rent/rent.controller.js'; 
+import { existentUsername, existentHotel, existentBedroom } from '../helpers/db-validator.js';
 
-router.post('/add', async (req, res) => {
-    try {
-        await RentHelper.existentUsername(req.body.nameClient);
-        await RentHelper.existentHotel(req.body.nameHotel);
+const router = Router();
 
-        if (Array.isArray(req.body.nameBedroom)) {
-            await RentHelper.notExistentBedNameArray(req.body.nameBedroom);
-        } else {
-            await RentHelper.notExistentBedName(req.body.nameBedroom);
-        }
+router.post(
+    "/add",
+    [
+        check("nameClient").not().isEmpty(),
+        check("nameHotel").not().isEmpty(),
+        check("nameBedroom").not().isEmpty(),
+        check("startDate").not().isEmpty(),
+        check("endDate").not().isEmpty(),
+        check("price").not().isEmpty(),
+        check("nameClient").custom(existentUsername),
+        check("nameHotel").custom(existentHotel),
+        check("nameBedroom").custom(existentBedroom),
+    ],addRent
+    
+);
 
-        await RentController.addRent(req, res);
-    } catch (error) {
-        console.error(error);
-        res.status(400).json({ error: error.message });
-    }
-});
+router.get("/", 
+    getRentList
+);
+
+router.get("/:id", 
+    getRentById
+);
+
+router.put(
+    "/:id",
+    [
+        check("id").isMongoId().withMessage("Invalid rental ID"),
+    ],updateRent
+);
+
+router.delete(
+    "/:id",
+    [
+        check("id").isMongoId().withMessage("Invalid rental ID"),
+    ],
+    deleteRent
+);
 
 export default router;
