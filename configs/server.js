@@ -11,6 +11,7 @@ import hotelRoutes from '../src/hotel/hotel.routes.js';
 import Role from '../src/role/role.model.js';
 import User from '../src/user/user.model.js';
 import userRoutes from '../src/user/user.routes.js';
+import eventRoutes from '../src/events/event.routes.js'
 import { dbConnection } from './mongo.js';
 
 class Server{
@@ -22,6 +23,7 @@ class Server{
         this.port = process.env.PORT;
         this.authPath = '/hotel-management/v1/auth'
         this.userPath = '/hotel-management/v1/user'
+        this.eventPath = '/hotel-management/v1/event'
         this.bedroomPath = '/hotel-management/v1/bedroom'
         this.hotelPath = '/hotel-management/v1/hotel'
 
@@ -106,6 +108,8 @@ class Server{
 
         this.app.use(this.authPath, authRoutes);
         this.app.use(this.userPath, userRoutes);
+        this.app.use(this.eventPath, eventRoutes);
+
         this.app.use(this.bedroomPath, bedroomRoutes);
         this.app.use(this.hotelPath, hotelRoutes);
 
