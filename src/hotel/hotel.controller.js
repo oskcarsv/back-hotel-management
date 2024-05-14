@@ -23,6 +23,20 @@ export const addHotel = async (req, res) => {
     })
 
 }
+export const getHotelById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const hotel = await Hotel.findById(id);
+        if (!hotel) {
+            return res.status(404).send("Hotel not found");
+        }
+        return res.status(200).json(hotel);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send("Error getting hotel by ID");
+    }
+};
+
 
 export const listHotel = async (req, res) => {
     
@@ -48,13 +62,43 @@ export const listHotel = async (req, res) => {
 
 }
 
+export const updateHotel = async (req, res) => {
+    try {
+        const { hotelName, hotelDirection, hotelNumber, bedroomName, bedroomCuantity, status } = req.body;
+        const { id } = req.params;
+
+        const hotel = await Hotel.findById(id);
+
+        if (!hotel) {
+            return res.status(404).json({ msg: "Hotel not found" });
+        }
+
+        if (hotelName) hotel.hotelName = hotelName;
+        if (hotelDirection) hotel.hotelDirection = hotelDirection;
+        if (hotelNumber) hotel.hotelNumber = hotelNumber;
+        if (bedroomName) hotel.bedroomName = bedroomName;
+        if (bedroomCuantity) hotel.bedroomCuantity = bedroomCuantity;
+        if (status) hotel.status = status;
+
+        await hotel.save();
+
+        return res.status(200).json({
+            msg: "Successfully updated hotel",
+            hotel
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send("Error updating hotel");
+    }
+};
+
 export const deleteHotel = async(req, res) =>{
 
     const {hotelName} = req.body;
 
     await Hotel.findOneAndUpdate({ hotelName }, { status: "CLOSED" });
 
-    const hotel = await Hotel.findOne({hotelName});
+    const Hotel = await Hotel.findOne({hotelName});
 
     res.status(200).json({
 

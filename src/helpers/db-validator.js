@@ -1,9 +1,7 @@
 import User from '../user/user.model.js';
-
 import Role from '../role/role.model.js';
-
+import Hotel from '../hotel/hotel.model.js';
 import Event from '../events/event.model.js'
-
 import Bedroom from '../bedroom/bedroom.model.js';
 
 
@@ -51,6 +49,7 @@ export const existentHotel = async (hotelName = '') => {
         throw new Error(`The Hotel ${hotelName} not found in Database`);
     }
 }
+
 
 export const existentUsername = async (username = '') => {
     const existUsername = await User.findOne({ username });

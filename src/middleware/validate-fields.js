@@ -1,6 +1,7 @@
 import { validationResult } from 'express-validator';
 
 import User from '../user/user.model.js';
+import Hotel from '../hotel/hotel.model.js'
 
 export const validateFields = (req, res, next) => {
     const errors = validationResult(req);
@@ -268,15 +269,40 @@ export const validateRolUpdate = async (req, res, next) =>{
                         msg: `${req.user.username}, you can't update a Profile with a Roles: ADMIN_BOSS_ROLE or SUPER_ROLE`
     
                     })
-    
                 }
-    
             }
-
         }
-
     }
-
     next();
-
 }
+
+export const checkHotelExists = async (req, res, next) => {
+    const { hotelId } = req.params;
+    try {
+        const hotel = await Hotel.findById(hotelId);
+        if (!hotel) {
+            return res.status(404).json({ error: 'Hotel not found' });
+        }
+        next();
+    } catch (error) {
+        console.error('Error checking hotel existence:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+export const checkHotelStatus = (allowedStatuses) => async (req, res, next) => {
+    const { hotelId } = req.params;
+    try {
+        const hotel = await Hotel.findById(hotelId);
+        if (!hotel) {
+            return res.status(404).json({ error: 'Hotel not found' });
+        }
+        if (!allowedStatuses.includes(hotel.status)) {
+            return res.status(403).json({ error: 'Operation not allowed for hotel status' });
+        }
+        next();
+    } catch (error) {
+        console.error('Error checking hotel status:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+};
