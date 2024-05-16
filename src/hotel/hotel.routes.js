@@ -10,6 +10,8 @@ import { validateJWT } from '../middleware/validate-jwt.js';
 
 import { validateFields } from '../middleware/validate-fields.js';
 
+import {haveRol} from '../middleware/validate-role.js';
+
 const router = Router();
 
 router.get("/", listHotel);
@@ -19,6 +21,7 @@ router.post(
     "/",
     [
         validateJWT,
+        haveRol("SUPER_ROLE", "ADMIN_EMPLOYEE_ROLE", "ADMIN_BOSS_ROLE"),
         check("hotelName").not().isEmpty(),
         check("hotelDirection").not().isEmpty(),
         check("hotelNumber").not().isEmpty(),
@@ -44,8 +47,10 @@ router.get(
 router.put(
     "/put/:id",
     [
+        validateJWT,
+        haveRol("SUPER_ROLE", "ADMIN_EMPLOYEE_ROLE", "ADMIN_BOSS_ROLE"),
         check("id", "ID de hotel no válido").isMongoId(),
-        check("id").custom(obtenerHotelPorId),
+        // check("id").custom(obtenerHotelPorId),
         
     ],updateHotel
 );
@@ -54,6 +59,7 @@ router.delete(
     "/",
     [
         validateJWT,
+        haveRol("SUPER_ROLE", "ADMIN_EMPLOYEE_ROLE", "ADMIN_BOSS_ROLE"),
         check("hotelName").not().isEmpty(),
         // check("hotelName").custom(existentHotel),
         validateFields

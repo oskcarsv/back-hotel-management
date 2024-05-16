@@ -22,13 +22,9 @@ const RentSchema = mongoose.Schema({
         type: Date,
         required: [true, "La fecha de fin del alquiler es requerida"]
     },
-    price: {
-        type: Number,
-        required: [true, "Rental price is required"]
-    },
     status: {
         type: String,
-        enum: ["Earring", "Confirmed", "Cancelled"],
+        enum: ["RENT_IN_PROGESS", "RENT_DONE"],
         default: "Earring"
     }
 });

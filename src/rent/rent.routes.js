@@ -1,28 +1,25 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { addRent, updateRent, getRentList, getRentById, deleteRent} from '../rent/rent.controller.js'; 
-import { existentUsername, existentHotel, existentBedroom } from '../helpers/db-validator.js';
+import { addRent, updateRent, listRent, getRentById, deleteRent} from '../rent/rent.controller.js'; 
+import { existentHotel, notExistentBedName } from '../helpers/db-validator.js';
 
 const router = Router();
 
 router.post(
     "/add",
     [
-        check("nameClient").not().isEmpty(),
         check("nameHotel").not().isEmpty(),
         check("nameBedroom").not().isEmpty(),
         check("startDate").not().isEmpty(),
         check("endDate").not().isEmpty(),
-        check("price").not().isEmpty(),
-        check("nameClient").custom(existentUsername),
         check("nameHotel").custom(existentHotel),
-        check("nameBedroom").custom(existentBedroom),
+        check("nameBedroom").custom(notExistentBedName),
     ],addRent
     
 );
 
 router.get("/", 
-    getRentList
+    listRent
 );
 
 router.get("/:id", 

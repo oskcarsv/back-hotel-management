@@ -12,6 +12,7 @@ import Role from '../src/role/role.model.js';
 import User from '../src/user/user.model.js';
 import userRoutes from '../src/user/user.routes.js';
 import eventRoutes from '../src/events/event.routes.js'
+import rentRoutes from '../src/rent/rent.routes.js';
 import { dbConnection } from './mongo.js';
 
 class Server{
@@ -26,6 +27,7 @@ class Server{
         this.eventPath = '/hotel-management/v1/event'
         this.bedroomPath = '/hotel-management/v1/bedroom'
         this.hotelPath = '/hotel-management/v1/hotel'
+        this.rentPath = '/hotel-management/v1/rent'
 
         this.middlewares();
         this.connectDB();
@@ -67,6 +69,8 @@ class Server{
             const ACTIVE = new Role({ hotelStatus: "ACTIVE" });
             const MAINTENANCE = new Role({ hotelStatus: "MAINTENANCE" });
             const CLOSED = new Role({hotelStatus: "CLOSED"});
+            const RENT_IN_PROGRESS = new Role({rentStatus: "RENT_IN_PROGRESS"});
+            const RENT_DONE = new Role({rentStatus: "RENT_DONE"});
 
             await SUPER_ROLE.save();
             await ADMIN_BOSS_ROLE.save();
@@ -79,6 +83,8 @@ class Server{
             await ACTIVE.save();
             await MAINTENANCE.save();
             await CLOSED.save();
+            await RENT_IN_PROGRESS.save();
+            await RENT_DONE.save();
 
             console.log('Default Credentials have been created.');
 
@@ -112,6 +118,7 @@ class Server{
 
         this.app.use(this.bedroomPath, bedroomRoutes);
         this.app.use(this.hotelPath, hotelRoutes);
+        this.app.use(this.rentPath, rentRoutes);
 
     }
 

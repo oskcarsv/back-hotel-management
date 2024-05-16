@@ -10,6 +10,8 @@ import { validateJWT } from '../middleware/validate-jwt.js';
 
 import { validateFields } from '../middleware/validate-fields.js';
 
+import { haveRol } from '../middleware/validate-role.js';
+
 const router = Router();
 
 router.get("/", listBedroom);
@@ -20,6 +22,7 @@ router.post(
     "/",
     [
         validateJWT,
+        haveRol("SUPER_ROLE", "ADMIN_EMPLOYEE_ROLE", "ADMIN_BOSS_ROLE"),
         check("bedroomName").not().isEmpty(),
         check("bedroomName").custom(existentBedName),
         check("bedroomPrize").not().isEmpty(),
@@ -51,6 +54,7 @@ router.put(
     "/",
     [
         validateJWT,
+        haveRol("SUPER_ROLE", "ADMIN_EMPLOYEE_ROLE", "ADMIN_BOSS_ROLE"),
         check("findBedroomName").not().isEmpty(),
         check("findBedroomName").custom(notExistentBedName),
         validateFields
@@ -63,6 +67,7 @@ router.delete(
     "/",
     [
         validateJWT,
+        haveRol("SUPER_ROLE", "ADMIN_EMPLOYEE_ROLE", "ADMIN_BOSS_ROLE"),
         check("bedroomName").not().isEmpty(),
         check("bedroomName").custom(existentBedName),
         validateFields
