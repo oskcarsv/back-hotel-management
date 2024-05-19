@@ -1,49 +1,34 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const HotelSchema = mongoose.Schema({
+  hotelName: {
+    type: String,
+    required: [true, 'The Hotel name is required']
+  },
 
-    hotelName: {
+  hotelDirection: {
+    type: String,
+    required: [true, 'The Hotel Direction is required']
+  },
 
-        type: String,
-        required: [true, "The Hotel name is required"]
+  hotelNumber: {
+    type: String,
+    required: [true, 'The Hotel Number is required']
+  },
 
-    },
+  bedroomName: {
+    type: [String]
+  },
 
-    hotelDirection: {
+  bedroomCuantity: {
+    type: Number
+  },
 
-        type: String,
-        required: [true, "The Hotel Direction is required"]
+  status: {
+    type: String,
+    enum: ['ACTIVE', 'MAINTENANCE', 'CLOSED'],
+    default: 'ACTIVE'
+  }
+})
 
-    },
-
-    hotelNumber: {
-
-        type: String,
-        required: [true, "The Hotel Number is required"]
-
-    },
-
-    bedroomName: {
-
-        type: [String]
-
-    },
-
-    bedroomCuantity: {
-
-        type: Number
-
-    },
-
-    status: {
-
-        type: String,
-        enum: ["ACTIVE", "MAINTENANCE", "CLOSED"],
-        default: "ACTIVE"
-
-    }
-
-});
-
-
-export default mongoose.model('Hotel', HotelSchema);
+export default mongoose.model('Hotel', HotelSchema)
