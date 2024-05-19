@@ -1,43 +1,30 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const EventSchema = mongoose.Schema({
+  title: {
+    type: String,
+    required: [true, 'Title is required']
+  },
 
-    title: {
+  description: {
+    type: String,
+    required: [true, 'Description is required']
+  },
 
-        type: String,
-        required: [true, "Title is required"]
+  date: {
+    type: Date,
+    required: [true, 'Date is required']
+  },
 
-    },
+  location: {
+    type: String,
+    required: [true, 'Location is required']
+  },
 
-    description: {
+  state: {
+    type: Boolean,
+    default: true
+  }
+})
 
-        type: String,
-        required: [true, "Description is required"]
-
-    },
-
-    date: {
-
-        type: Date,
-        required: [true, "Date is required"]
-
-    },
-
-    location: {
-
-        type: String,
-        required: [true, "Location is required"]
-
-    },
-
-    state: {
-
-        type: Boolean,
-        default: true
-
-    }
-
-});
-
-
-export default mongoose.model('Event', EventSchema);
+export default mongoose.model('Event', EventSchema)
