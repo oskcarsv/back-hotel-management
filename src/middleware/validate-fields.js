@@ -226,12 +226,9 @@ export const checkHotelStatus = (allowedStatuses) => async (req, res, next) => {
 }
 
 export const userActive = (req, res, next) => {
-
   if (!req.user.role) {
     return res.status(400).json({
-
       msg: `${req.user.username} your user is disabled, please contact support to enable again.`
-
     })
   }
 

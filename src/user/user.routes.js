@@ -32,14 +32,7 @@ import { haveRol } from '../middleware/validate-role.js'
 
 const router = Router()
 
-router.get(
-  '/',
-  [
-    validateJWT,
-    userActive
-  ],
-  listUsers
-)
+router.get('/', [validateJWT, userActive], listUsers)
 
 router.post(
   '/',

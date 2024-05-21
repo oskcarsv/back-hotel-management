@@ -55,12 +55,10 @@ export const createUser = async (req, res) => {
 }
 
 export const listUsers = async (req, res = response) => {
-
   if (req.user.role === 'USER_ROLE') {
-
     const { limit, from } = req.query
 
-    const query = {state: true, username: req.user.username}
+    const query = { state: true, username: req.user.username }
 
     const [total, user] = await Promise.all([
       User.countDocuments(query),
@@ -70,10 +68,8 @@ export const listUsers = async (req, res = response) => {
     res.status(200).json({
       msg: `${req.user.username} your profile:`,
       user
-    })    
-
-  }else{
-
+    })
+  } else {
     const { limit, from } = req.query
 
     const query = { state: true }
@@ -87,7 +83,6 @@ export const listUsers = async (req, res = response) => {
       total,
       user
     })
-
   }
 }
 
