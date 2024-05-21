@@ -35,8 +35,10 @@ router.get(
   '/',
   [
     validateJWT,
-    haveRol('SUPER_ROLE', 'ADMIN_EMPLOYEE_ROLE', 'ADMIN_BOSS_ROLE'),
-  ],listUsers)
+    haveRol('SUPER_ROLE', 'ADMIN_EMPLOYEE_ROLE', 'ADMIN_BOSS_ROLE')
+  ],
+  listUsers
+)
 
 router.post(
   '/',
