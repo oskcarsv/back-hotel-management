@@ -3,6 +3,9 @@ import bcryptjs from 'bcryptjs'
 import User from './user.model.js'
 
 export const createUser = async (req, res) => {
+
+  let userRole = "";
+
   if (req.user.role === 'USER_ROLE') {
     const { name, username, email, password } = req.body
 
@@ -26,12 +29,22 @@ export const createUser = async (req, res) => {
   } else {
     const { name, username, email, password, role } = req.body
 
+    if(role == "" || role == null){
+
+      userRole = "USER_ROLE"
+
+    }else{
+
+      userRole = role;
+
+    }
+
     const user = new User({
       name,
       username,
       email,
       password,
-      role
+      role: userRole
     })
 
     const salt = bcryptjs.genSaltSync()
