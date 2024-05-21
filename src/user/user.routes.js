@@ -27,9 +27,16 @@ import {
 
 import { validationPassword } from '../helpers/data-validator.js'
 
+import { haveRol } from '../middleware/validate-role.js'
+
 const router = Router()
 
-router.get('/', listUsers)
+router.get(
+  '/',
+  [
+    validateJWT,
+    haveRol('SUPER_ROLE', 'ADMIN_EMPLOYEE_ROLE', 'ADMIN_BOSS_ROLE'),
+  ],listUsers)
 
 router.post(
   '/',
