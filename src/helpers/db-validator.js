@@ -67,9 +67,8 @@ export const existentRole = async (role = '') => {
 }
 
 export const existentUserOrEmail = async (usernameOrEmail = '') => {
-
   if (!usernameOrEmail) {
-    return;
+    return
   }
 
   if (usernameOrEmail.includes('@')) {
