@@ -67,6 +67,11 @@ export const existentRole = async (role = '') => {
 }
 
 export const existentUserOrEmail = async (usernameOrEmail = '') => {
+
+  if (!usernameOrEmail) {
+    return;
+  }
+
   if (usernameOrEmail.includes('@')) {
     const existEmail = await User.findOne({ email: usernameOrEmail })
 
