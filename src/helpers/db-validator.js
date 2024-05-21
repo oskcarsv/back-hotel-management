@@ -57,6 +57,10 @@ export const existentUsername = async (username = '') => {
 }
 
 export const existentRole = async (role = '') => {
+  if (!role) {
+    return
+  }
+
   if (!role == '' || !role == null) {
     const existRole = await Role.findOne({ role })
 
@@ -67,6 +71,10 @@ export const existentRole = async (role = '') => {
 }
 
 export const existentUserOrEmail = async (usernameOrEmail = '') => {
+  if (!usernameOrEmail) {
+    return
+  }
+
   if (usernameOrEmail.includes('@')) {
     const existEmail = await User.findOne({ email: usernameOrEmail })
 

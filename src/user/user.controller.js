@@ -3,6 +3,8 @@ import bcryptjs from 'bcryptjs'
 import User from './user.model.js'
 
 export const createUser = async (req, res) => {
+  let userRole = ''
+
   if (req.user.role === 'USER_ROLE') {
     const { name, username, email, password } = req.body
 
@@ -26,12 +28,18 @@ export const createUser = async (req, res) => {
   } else {
     const { name, username, email, password, role } = req.body
 
+    if (role == '' || role == null) {
+      userRole = 'USER_ROLE'
+    } else {
+      userRole = role
+    }
+
     const user = new User({
       name,
       username,
       email,
       password,
-      role
+      role: userRole
     })
 
     const salt = bcryptjs.genSaltSync()
@@ -47,19 +55,35 @@ export const createUser = async (req, res) => {
 }
 
 export const listUsers = async (req, res = response) => {
-  const { limit, from } = req.query
+  if (req.user.role === 'USER_ROLE') {
+    const { limit, from } = req.query
 
-  const query = { state: true }
+    const query = { state: true, username: req.user.username }
 
-  const [total, user] = await Promise.all([
-    User.countDocuments(query),
-    User.find(query).skip(Number(from)).limit(Number(limit))
-  ])
+    const [total, user] = await Promise.all([
+      User.countDocuments(query),
+      User.find(query).skip(Number(from)).limit(Number(limit))
+    ])
 
-  res.status(200).json({
-    total,
-    user
-  })
+    res.status(200).json({
+      msg: `${req.user.username} your profile:`,
+      user
+    })
+  } else {
+    const { limit, from } = req.query
+
+    const query = { state: true }
+
+    const [total, user] = await Promise.all([
+      User.countDocuments(query),
+      User.find(query).skip(Number(from)).limit(Number(limit))
+    ])
+
+    res.status(200).json({
+      total,
+      user
+    })
+  }
 }
 
 export const deleteUser = async (req, res = response) => {

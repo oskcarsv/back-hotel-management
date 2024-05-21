@@ -15,7 +15,9 @@ import {
   validateFields,
   validateRolCreate,
   validateRolDelete,
-  validateRolUpdate
+  validateRolUpdate,
+  userActive,
+  checkRole
 } from '../middleware/validate-fields.js'
 
 import {
@@ -27,9 +29,11 @@ import {
 
 import { validationPassword } from '../helpers/data-validator.js'
 
+import { haveRol } from '../middleware/validate-role.js'
+
 const router = Router()
 
-router.get('/', listUsers)
+router.get('/', [validateJWT, userActive], listUsers)
 
 router.post(
   '/',
@@ -66,7 +70,10 @@ router.put(
   '/',
   [
     validateJWT,
-    // validateRolUpdate,
+    check('usernameOrEmail').custom(existentUserOrEmail),
+    validateRolUpdate,
+    check('role').custom(existentRole),
+    checkRole,
     validateFields
   ],
   updateUser
