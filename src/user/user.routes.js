@@ -16,7 +16,8 @@ import {
   validateRolCreate,
   validateRolDelete,
   validateRolUpdate,
-  userActive
+  userActive,
+  checkRole
 } from '../middleware/validate-fields.js'
 
 import {
@@ -69,7 +70,10 @@ router.put(
   '/',
   [
     validateJWT,
-    // validateRolUpdate,
+    check('usernameOrEmail').custom(existentUserOrEmail),
+    validateRolUpdate,
+    check('role').custom(existentRole),
+    checkRole,
     validateFields
   ],
   updateUser

@@ -193,6 +193,7 @@ export const updateUser = async (req, res) => {
           res.status(200).json({
             msg: `${req.user.username} you update successfully the profile ${user.username}`
           })
+
         } else {
           await User.findOneAndUpdate({ username: usernameOrEmail }, rest)
 

@@ -57,6 +57,13 @@ export const existentUsername = async (username = '') => {
 }
 
 export const existentRole = async (role = '') => {
+
+  if(!role){
+
+    return;
+
+  }
+
   if (!role == '' || !role == null) {
     const existRole = await Role.findOne({ role })
 

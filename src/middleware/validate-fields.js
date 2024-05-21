@@ -234,3 +234,13 @@ export const userActive = (req, res, next) => {
 
   next()
 }
+
+export const checkRole = (req, res, next) => {
+  if (req.user.role == "USER_ROLE") {
+    return res.status(400).json({
+      msg: `${req.user.username} you can't change your role.`
+    })
+  }
+
+  next()
+}
