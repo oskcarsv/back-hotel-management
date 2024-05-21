@@ -60,19 +60,40 @@ export const createUser = async (req, res) => {
 }
 
 export const listUsers = async (req, res = response) => {
-  const { limit, from } = req.query
 
-  const query = { state: true }
+  if (req.user.role === 'USER_ROLE') {
 
-  const [total, user] = await Promise.all([
-    User.countDocuments(query),
-    User.find(query).skip(Number(from)).limit(Number(limit))
-  ])
+    const { limit, from } = req.query
 
-  res.status(200).json({
-    total,
-    user
-  })
+    const query = {state: true, username: req.user.username}
+
+    const [total, user] = await Promise.all([
+      User.countDocuments(query),
+      User.find(query).skip(Number(from)).limit(Number(limit))
+    ])
+
+    res.status(200).json({
+      msg: `${req.user.username} your profile:`,
+      user
+    })    
+
+  }else{
+
+    const { limit, from } = req.query
+
+    const query = { state: true }
+
+    const [total, user] = await Promise.all([
+      User.countDocuments(query),
+      User.find(query).skip(Number(from)).limit(Number(limit))
+    ])
+
+    res.status(200).json({
+      total,
+      user
+    })
+
+  }
 }
 
 export const deleteUser = async (req, res = response) => {

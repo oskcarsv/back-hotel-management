@@ -15,7 +15,8 @@ import {
   validateFields,
   validateRolCreate,
   validateRolDelete,
-  validateRolUpdate
+  validateRolUpdate,
+  userActive
 } from '../middleware/validate-fields.js'
 
 import {
@@ -35,7 +36,7 @@ router.get(
   '/',
   [
     validateJWT,
-    haveRol('SUPER_ROLE', 'ADMIN_EMPLOYEE_ROLE', 'ADMIN_BOSS_ROLE')
+    userActive
   ],
   listUsers
 )
