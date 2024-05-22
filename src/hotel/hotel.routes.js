@@ -32,7 +32,7 @@ router.post(
     check('hotelNumber').not().isEmpty(),
     check('bedroomName').not().isEmpty(),
     check('bedroomCuantity').not().isEmpty(),
-    check('bedroomName').custom(notExistentBedNameArray),
+    // check('bedroomName').custom(notExistentBedNameArray),
     validateFields
   ],
   addHotel
