@@ -20,7 +20,7 @@ import { haveRol } from '../middleware/validate-role.js'
 
 const router = Router()
 
-router.get('/', listHotel)
+router.get('/', [validateJWT], listHotel)
 
 router.post(
   '/',

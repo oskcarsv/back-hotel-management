@@ -6,6 +6,12 @@ const BedroomSchema = mongoose.Schema({
     required: [true, 'The Bedroom Name is required']
   },
 
+  bedroomImage: {
+    type: String,
+    default:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOWvwTDIf-fxsYhef9fGrtpNCJUTgBYhOMuMipM7Dl8A&s'
+  },
+
   bedroomPrize: {
     type: String,
     required: [true, 'The Bedroom Prize is required']
