@@ -3,6 +3,7 @@ import Hotel from './hotel.model.js'
 export const addHotel = async (req, res) => {
   const {
     hotelName,
+    hotelImage,
     hotelDirection,
     hotelNumber,
     bedroomName,
@@ -11,6 +12,7 @@ export const addHotel = async (req, res) => {
 
   const hotel = new Hotel({
     hotelName,
+    hotelImage,
     hotelDirection,
     hotelNumber,
     bedroomName,
