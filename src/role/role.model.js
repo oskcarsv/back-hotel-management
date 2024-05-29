@@ -15,10 +15,6 @@ const RoleSchema = mongoose.Schema({
 
   rentStatus: {
     type: String
-  },
-  //Hola soy una función que no sirve para nada
-  nosirvoparanada: {
-    type: String
   }
 })
 
