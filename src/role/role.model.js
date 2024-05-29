@@ -1,21 +1,25 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const RoleSchema = mongoose.Schema({
   role: {
-    type: String
+    type: String,
   },
 
   bedroomStatus: {
-    type: String
+    type: String,
   },
 
   hotelStatus: {
-    type: String
+    type: String,
   },
 
   rentStatus: {
-    type: String
-  }
-})
+    type: String,
+  },
+  // Hola soy una función que no sirve para nada
+  nosirvoparanada: {
+    type: String,
+  },
+});
 
-export default mongoose.model('Role', RoleSchema)
+export default mongoose.model("Role", RoleSchema);
