@@ -14,9 +14,8 @@ const RoleSchema = mongoose.Schema({
   },
 
   rentStatus: {
-    type: String
-  }
-
+    type: String,
+  },
 });
 
 export default mongoose.model("Role", RoleSchema);
